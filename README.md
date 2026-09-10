@@ -23,6 +23,8 @@
 
 ---
 
+当前版本：**1.6.0**。支持独立正反向 WS、市场自动部署和管理员快捷初始化，详见 [1.6.0 更新说明](release-notes-1.6.0.md)。
+
 ## 项目简介
 
 B站综合插件（Bilibili Utility Suite）通过萌卡 NT 的正向 WebSocket 接收机器人事件，为群聊和私聊提供 Bilibili 查询、订阅、解析与通知能力。Windows 和 Linux 版本共用同一套 Web 管理界面，所有主要配置都可以在浏览器中完成。

@@ -1,3 +1,5 @@
+Current release: **1.6.0**. Supports forward/reverse WebSocket and managed marketplace deployment.
+
 <div align="center">
   <img src="bilibili-suite-cover.png" width="100%" alt="B站综合插件" />
 
