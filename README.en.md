@@ -1,4 +1,4 @@
-Current release: **1.6.0**. Supports forward/reverse WebSocket and managed marketplace deployment.
+Current release: **1.6.3**. Supports native IPC import on MoeCard NT 2.4.1+ and standalone forward/reverse WebSocket deployment.
 
 <div align="center">
   <img src="bilibili-suite-cover.png" width="100%" alt="B站综合插件" />
@@ -19,7 +19,7 @@ Current release: **1.6.0**. Supports forward/reverse WebSocket and managed marke
 
 ## Overview
 
-B站综合插件 (Bilibili Utility Suite) connects to MoeCard NT through a forward WebSocket service and provides Bilibili queries, subscriptions, link parsing, notifications, and locally rendered image cards for group and private chats.
+B站综合插件 (Bilibili Utility Suite) connects to MoeCard NT 2.4.1+ through native IPC and provides Bilibili queries, subscriptions, link parsing, notifications, and locally rendered image cards for group and private chats. Standalone deployments can still use forward or reverse WebSocket.
 
 Windows and Linux share the same browser-based administration UI. The plugin sends plain text and image messages only and does not depend on Markdown support.
 
@@ -41,19 +41,21 @@ Send `哔哩菜单` in chat to open the command menu.
 
 | Platform | Package | Requirements |
 | --- | --- | --- |
-| Windows x64 | `BilibiliSuite-*-windows-x86_64.zip` | Windows x86_64 and a modern browser |
-| Linux x86_64 | `BilibiliSuite-*-linux-x86_64.tar.gz` | glibc 2.35+, Ubuntu 22.04/24.04 recommended |
+| Windows x64 | `BilibiliSuite-*-native-windows-amd64.zip` | MoeCard NT 2.4.1+ plugin import |
+| Linux x86_64 | `BilibiliSuite-*-native-linux-amd64.tar.gz` | MoeCard NT 2.4.1+, glibc 2.35+ |
+| Linux ARM64 | `BilibiliSuite-*-native-linux-arm64.tar.gz` | MoeCard NT 2.4.1+, glibc 2.35+ |
 
 Windows and Linux packages are not interchangeable.
 
 ## Quick Start
 
-1. Download the package for your platform from [GitHub Releases](https://github.com/CarlorOfficial/Bilibili-Utility-Suite/releases/latest).
-2. On Windows, extract the ZIP and run `BilibiliSuite.exe`. On Linux, extract the archive and run `sudo ./install.sh`.
-3. Complete the first-run WebUI port and management-token setup. The default port is `18080`.
-4. Open the displayed WebUI address and configure the MoeCard NT host, port, and framework token.
-5. Add plugin-owner QQ numbers, verify each bot's authorization status, and configure features per bot and group.
-6. Send `扫码登录账号` in chat to complete an independent Bilibili QR login before using queries and subscriptions.
+1. Download the `native` package for the server OS and architecture from [GitHub Releases](https://github.com/CarlorOfficial/Bilibili-Utility-Suite/releases/latest).
+2. In MoeCard NT, open **Plugins → Plugin Import**, upload the package, review its requested capabilities, and confirm the import.
+3. Open the plugin administration page from MoeCard NT. Native IPC is connected automatically and does not require a WebSocket port or token.
+4. Add plugin-owner QQ numbers, verify each bot's authorization status, and configure features per bot and group.
+5. Use the account page or send `扫码登录账号` in chat to complete an independent Bilibili QR login before using queries and subscriptions.
+
+For standalone deployment, download the package without `native`, extract it, complete the WebUI initialization, and configure forward or reverse WebSocket manually.
 
 ## Custom Message Templates
 
@@ -69,7 +71,7 @@ The WebUI provides 18 templates for live notifications and summaries, live event
 
 ## Signed Updates
 
-The WebUI checks the latest GitHub Release and offers an update only when the remote version is newer. Platform-specific packages and their `.sig` files are downloaded together and installed only after signature verification succeeds.
+Standalone deployments can check the latest GitHub Release in the WebUI. Native IPC installations are upgraded from MoeCard NT's plugin management page. Platform-specific packages and their `.sig` files are published together.
 
 ## Security Notice
 
