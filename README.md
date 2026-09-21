@@ -23,11 +23,11 @@
 
 ---
 
-当前版本：**1.6.0**。支持独立正反向 WS、市场自动部署和管理员快捷初始化，详见 [1.6.0 更新说明](release-notes-1.6.0.md)。
+当前版本：**1.6.3**。支持萌卡 NT 2.4.1+ 原生 IPC 插件导入，也保留独立正向/反向 WebSocket 部署，详见 [1.6.3 更新说明](release-notes-1.6.3.md)。
 
 ## 项目简介
 
-B站综合插件（Bilibili Utility Suite）通过萌卡 NT 的正向 WebSocket 接收机器人事件，为群聊和私聊提供 Bilibili 查询、订阅、解析与通知能力。Windows 和 Linux 版本共用同一套 Web 管理界面，所有主要配置都可以在浏览器中完成。
+B站综合插件（Bilibili Utility Suite）通过萌卡 NT 2.4.1+ 的原生 IPC 接收机器人事件，为群聊和私聊提供 Bilibili 查询、订阅、解析与通知能力。独立部署时也可使用正向或反向 WebSocket。Windows 和 Linux 版本共用同一套 Web 管理界面，所有主要配置都可以在浏览器中完成。
 
 插件遵循宿主能力，仅发送**文字与图片消息**，不依赖 Markdown。动态、视频和直播间等内容可使用本地渲染的图片卡片展示，文字模式同样会保留有用的封面或动态图片。
 
@@ -79,18 +79,27 @@ B站综合插件（Bilibili Utility Suite）通过萌卡 NT 的正向 WebSocket 
 
 | 平台 | 外发包 | 运行方式 | 要求 |
 | --- | --- | --- | --- |
-| Windows x64 | `BilibiliSuite-*-windows-x86_64.zip` | 解压后运行 `BilibiliSuite.exe` | Windows x86_64，现代浏览器 |
-| Linux x86_64 | `BilibiliSuite-*-linux-x86_64.tar.gz` | 解压后执行 `sudo ./install.sh` | glibc 2.35+，推荐 Ubuntu 22.04/24.04 |
+| Windows x64 | `BilibiliSuite-*-native-windows-amd64.zip` | 框架“插件 → 插件导入” | 萌卡 NT 2.4.1+ |
+| Linux x86_64 | `BilibiliSuite-*-native-linux-amd64.tar.gz` | 框架“插件 → 插件导入” | 萌卡 NT 2.4.1+，glibc 2.35+ |
+| Linux ARM64 | `BilibiliSuite-*-native-linux-arm64.tar.gz` | 框架“插件 → 插件导入” | 萌卡 NT 2.4.1+，glibc 2.35+ |
+| 独立部署 | 不含 `native` 的对应平台包 | 解压后运行或安装 | 手动配置正向/反向 WebSocket |
 
-Windows 与 Linux 使用不同的二进制和更新包，请勿混用。Linux 版本不需要桌面环境，安装后由 systemd 管理并通过 WebUI 配置。
+Windows、Linux x86_64 与 Linux ARM64 使用不同的二进制，请勿混用。框架部署应下载文件名包含 `native` 的包；独立 Linux 部署不需要桌面环境，安装后由 systemd 管理并通过 WebUI 配置。
 
 ## 快速开始
 
 ### 1. 下载
 
-前往 [GitHub Releases](https://github.com/CarlorOfficial/Bilibili-Utility-Suite/releases/latest)，下载与系统对应的压缩包。Release 中的同名 `.sig` 是在线更新使用的数字签名，请勿使用来源不明或签名不匹配的包。
+前往 [GitHub Releases](https://github.com/CarlorOfficial/Bilibili-Utility-Suite/releases/latest)，下载与系统和架构对应的压缩包。萌卡 NT 2.4.1+ 用户选择文件名包含 `native` 的插件导入包；独立部署选择普通包。Release 中的同名 `.sig` 是数字签名，请勿使用来源不明或签名不匹配的包。
 
-### 2. 启动与初始化
+### 2. 框架插件导入（推荐）
+
+1. 打开萌卡 NT 的“插件 → 插件导入”。
+2. 上传与服务器系统、架构一致的 `native` 包，查看并确认插件申请的能力。
+3. 导入完成后由框架自动启动插件；无需填写 WebSocket 端口或令牌。
+4. 从插件管理页面打开管理端，完成插件主人、账号授权、群功能和 B站扫码登录配置。
+
+### 3. 独立部署
 
 <details open>
 <summary><strong>Windows</strong></summary>
@@ -131,12 +140,12 @@ systemctl restart bilibili-suite
 
 </details>
 
-### 3. 对接萌卡 NT
+### 4. 完成业务配置
 
 进入 WebUI 后依次完成：
 
-1. 在“框架连接”填写框架 IP/域名、端口和令牌；
-2. 保存并启动连接，等待框架识别机器人 QQ；
+1. 插件导入模式会自动连接框架；独立部署才需要在“框架连接”填写地址、端口和令牌；
+2. 等待框架识别机器人 QQ；
 3. 在“插件主人”填写主人 QQ，多个号码使用 `#` 分隔；
 4. 在“账号管理”确认各 QQ 的授权状态和到期时间；
 5. 按机器人 QQ 和群号进入“插件配置”设置消息模式、功能开关与自定义消息模板；
@@ -149,7 +158,7 @@ WebUI 同时适用于 Windows 与 Linux，主要页面包括：
 - **仪表盘**：框架连接、机器人数量、授权数量和运行状态；
 - **账号管理**：查看每个 QQ 的独立授权状态与有效期；
 - **插件配置**：按 QQ、按群配置解析、消息模式、通知开关和自定义消息模板；
-- **框架连接**：保存、启动、暂停或修改 WebSocket 配置；
+- **框架连接**：插件导入模式查看原生 IPC 状态；独立部署保存、启动、暂停或修改 WebSocket 配置；
 - **插件主人**：支持多个主人 QQ，并可在框架离线时独立保存；
 - **运行日志**：查看收到的消息、命令匹配、授权与发送结果，敏感字段自动脱敏；
 - **右上角账户菜单**：查看管理员资料、刷新授权状态或安全退出 WebUI；
@@ -189,7 +198,7 @@ WebUI 同时适用于 Windows 与 Linux，主要页面包括：
 
 ## 在线更新
 
-WebUI 右上角可以检查 GitHub 最新 Release：
+独立部署可在 WebUI 右上角检查 GitHub 最新 Release；插件导入模式由框架插件管理页面负责升级：
 
 1. 只在远端版本高于当前版本时显示更新；
 2. Windows 与 Linux 自动选择各自的 x86_64 包；
@@ -202,7 +211,7 @@ WebUI 右上角可以检查 GitHub 最新 Release：
 <details>
 <summary><strong>框架显示已连接，但机器人收不到消息</strong></summary>
 
-确认萌卡 NT 使用的是正向 WebSocket 服务，并检查框架 IP、端口和令牌。然后在“运行日志”确认是否出现群聊或私聊事件；如果只看到账号列表轮询，没有收到消息事件，请检查框架插件服务的事件推送配置。
+插件导入模式先在框架插件管理页确认状态为运行中，并检查已确认的消息事件权限。独立部署则检查正向/反向 WebSocket 地址、端口和令牌。然后在“运行日志”确认是否出现群聊或私聊事件。
 
 </details>
 
