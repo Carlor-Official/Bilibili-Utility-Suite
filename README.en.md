@@ -1,4 +1,4 @@
-Current release: **1.6.3**. Supports native IPC import on MoeCard NT 2.4.1+ and standalone forward/reverse WebSocket deployment.
+Current release: **1.6.5**. Supports native IPC import on MoeCard NT 2.4.1+ and standalone forward/reverse WebSocket deployment.
 
 <div align="center">
   <img src="bilibili-suite-cover.png" width="100%" alt="B站综合插件" />
