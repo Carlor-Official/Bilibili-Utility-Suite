@@ -1,6 +1,6 @@
-Current release: **1.6.8**. Supports native IPC import on MoeCard NT 2.4.1+ and standalone forward/reverse WebSocket deployment.
+Current release: **1.6.9**. Supports native IPC import on MoeCard NT 2.4.1+ and standalone forward/reverse WebSocket deployment.
 
-Version 1.6.8 adds the framework-style Online Update control. Standalone installations can update in place. Framework v2.5.0 does not configure a managed update resolver; managed installations must import the matching native package while retaining existing data.
+Version 1.6.9 adds the framework-style Online Update control. Standalone installations can update in place. Framework v2.5.0 does not configure a managed update resolver; managed installations must import the matching native package while retaining existing data.
 
 <div align="center">
   <img src="bilibili-suite-cover.png" width="100%" alt="B站综合插件" />
