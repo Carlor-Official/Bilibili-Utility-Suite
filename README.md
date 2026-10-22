@@ -23,11 +23,13 @@
 
 ---
 
-当前版本：**1.6.10**。支持萌卡 NT 2.4.1+ 原生 IPC 插件导入，也保留独立正向/反向 WebSocket 部署，详见 [1.6.10 更新说明](release-notes-1.6.10.md)。
+当前版本：**1.6.11**。支持萌卡 NT 2.9.0+ 原生 IPC 插件导入，也保留独立正向/反向 WebSocket 部署，详见 [1.6.11 更新说明](release-notes-1.6.11.md)。
+
+**原生包需要框架 2.9.0；仍使用 2.8.x 的用户请保留 [1.6.10](https://github.com/Carlor-Official/Bilibili-Utility-Suite/releases/tag/1.6.10)。**
 
 ## 项目简介
 
-B站综合插件（Bilibili Utility Suite）通过萌卡 NT 2.4.1+ 的原生 IPC 接收机器人事件，为群聊和私聊提供 Bilibili 查询、订阅、解析与通知能力。独立部署时也可使用正向或反向 WebSocket。Windows 和 Linux 版本共用同一套 Web 管理界面，所有主要配置都可以在浏览器中完成。
+B站综合插件（Bilibili Utility Suite）通过萌卡 NT 2.9.0+ 的原生 IPC 接收机器人事件，为群聊和私聊提供 Bilibili 查询、订阅、解析与通知能力。独立部署时也可使用正向或反向 WebSocket。Windows 和 Linux 版本共用同一套 Web 管理界面，所有主要配置都可以在浏览器中完成。
 
 插件遵循宿主能力，仅发送**文字与图片消息**，不依赖 Markdown。动态、视频和直播间等内容可使用本地渲染的图片卡片展示，文字模式同样会保留有用的封面或动态图片。
 
@@ -79,9 +81,9 @@ B站综合插件（Bilibili Utility Suite）通过萌卡 NT 2.4.1+ 的原生 IPC
 
 | 平台 | 外发包 | 运行方式 | 要求 |
 | --- | --- | --- | --- |
-| Windows x64 | `BilibiliSuite-*-native-windows-amd64.zip` | 框架“插件 → 插件导入” | 萌卡 NT 2.4.1+ |
-| Linux x86_64 | `BilibiliSuite-*-native-linux-amd64.tar.gz` | 框架“插件 → 插件导入” | 萌卡 NT 2.4.1+，glibc 2.35+ |
-| Linux ARM64 | `BilibiliSuite-*-native-linux-arm64.tar.gz` | 框架“插件 → 插件导入” | 萌卡 NT 2.4.1+，glibc 2.35+ |
+| Windows x64 | `BilibiliSuite-*-native-windows-amd64.zip` | 框架“插件 → 插件导入” | 萌卡 NT 2.9.0+ |
+| Linux x86_64 | `BilibiliSuite-*-native-linux-amd64.tar.gz` | 框架“插件 → 插件导入” | 萌卡 NT 2.9.0+，glibc 2.35+ |
+| Linux ARM64 | `BilibiliSuite-*-native-linux-arm64.tar.gz` | 框架“插件 → 插件导入” | 萌卡 NT 2.9.0+，glibc 2.35+ |
 | 独立部署 | 不含 `native` 的对应平台包 | 解压后运行或安装 | 手动配置正向/反向 WebSocket |
 
 Windows、Linux x86_64 与 Linux ARM64 使用不同的二进制，请勿混用。框架部署应下载文件名包含 `native` 的包；独立 Linux 部署不需要桌面环境，安装后由 systemd 管理并通过 WebUI 配置。
@@ -90,7 +92,7 @@ Windows、Linux x86_64 与 Linux ARM64 使用不同的二进制，请勿混用�
 
 ### 1. 下载
 
-前往 [GitHub Releases](https://github.com/CarlorOfficial/Bilibili-Utility-Suite/releases/latest)，下载与系统和架构对应的压缩包。萌卡 NT 2.4.1+ 用户选择文件名包含 `native` 的插件导入包；独立部署选择普通包。Release 中的同名 `.sig` 是数字签名，请勿使用来源不明或签名不匹配的包。
+前往 [GitHub Releases](https://github.com/CarlorOfficial/Bilibili-Utility-Suite/releases/latest)，下载与系统和架构对应的压缩包。萌卡 NT 2.9.0+ 用户选择文件名包含 `native` 的插件导入包；独立部署选择普通包。Release 中的同名 `.sig` 是数字签名，请勿使用来源不明或签名不匹配的包。
 
 ### 2. 框架插件导入（推荐）
 
