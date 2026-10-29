@@ -1,6 +1,6 @@
-Current release: **1.6.14**. Native IPC import requires MoeCard NT 3.0.3 or newer. Standalone forward/reverse WebSocket deployment remains available.
+Current release: **1.6.15**. Native IPC import requires MoeCard NT 3.0.3 or newer. Standalone forward/reverse WebSocket deployment remains available.
 
-Version 1.6.14 updates the framework 3.0 API and IPC v1 lifecycle, fixes managed gateway routing, isolates accounts by node and protocol, and distinguishes message submission from delivery confirmation. Upgrade older frameworks before importing the native package; retain existing data and review the updated permissions. ARM64 validation uses QEMU.
+Version 1.6.15 redesigns the console content with consistent forms, tables, dialogs, button contrast, spacing, and responsive light/dark layouts. Native imports require framework 3.0.3 or newer; retain existing data when upgrading. ARM64 validation uses QEMU.
 
 <div align="center">
   <img src="bilibili-suite-cover.png" width="100%" alt="B站综合插件" />
