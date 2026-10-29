@@ -1,6 +1,6 @@
-Current release: **1.6.11**. Supports native IPC import on MoeCard NT 2.9.0+ and standalone forward/reverse WebSocket deployment.
+Current release: **1.6.14**. Native IPC import requires MoeCard NT 3.0.3 or newer. Standalone forward/reverse WebSocket deployment remains available.
 
-Version 1.6.11 adapts native IPC API v2, account routing by protocol ID, group/friend image uploads and mentions to framework 2.9.0. Native users on framework 2.8.x should keep version 1.6.10 until the framework is upgraded. Import the matching native package while retaining existing data and approve the updated permissions.
+Version 1.6.14 updates the framework 3.0 API and IPC v1 lifecycle, fixes managed gateway routing, isolates accounts by node and protocol, and distinguishes message submission from delivery confirmation. Upgrade older frameworks before importing the native package; retain existing data and review the updated permissions. ARM64 validation uses QEMU.
 
 <div align="center">
   <img src="bilibili-suite-cover.png" width="100%" alt="B站综合插件" />
@@ -21,7 +21,7 @@ Version 1.6.11 adapts native IPC API v2, account routing by protocol ID, group/f
 
 ## Overview
 
-B站综合插件 (Bilibili Utility Suite) connects to MoeCard NT 2.9.0+ through native IPC and provides Bilibili queries, subscriptions, link parsing, notifications, and locally rendered image cards for group and private chats. Standalone deployments can still use forward or reverse WebSocket.
+B站综合插件 (Bilibili Utility Suite) connects to MoeCard NT 3.0.3+ through native IPC and provides Bilibili queries, subscriptions, link parsing, notifications, and locally rendered image cards for group and private chats. Standalone deployments can still use forward or reverse WebSocket.
 
 Windows and Linux share the same browser-based administration UI. The plugin sends plain text and image messages only and does not depend on Markdown support.
 
@@ -43,9 +43,9 @@ Send `哔哩菜单` in chat to open the command menu.
 
 | Platform | Package | Requirements |
 | --- | --- | --- |
-| Windows x64 | `BilibiliSuite-*-native-windows-amd64.zip` | MoeCard NT 2.9.0+ plugin import |
-| Linux x86_64 | `BilibiliSuite-*-native-linux-amd64.tar.gz` | MoeCard NT 2.9.0+, glibc 2.35+ |
-| Linux ARM64 | `BilibiliSuite-*-native-linux-arm64.tar.gz` | MoeCard NT 2.9.0+, glibc 2.35+ |
+| Windows x64 | `BilibiliSuite-*-native-windows-amd64.zip` | MoeCard NT 3.0.3+ plugin import |
+| Linux x86_64 | `BilibiliSuite-*-native-linux-amd64.tar.gz` | MoeCard NT 3.0.3+, glibc 2.35+ |
+| Linux ARM64 | `BilibiliSuite-*-native-linux-arm64.tar.gz` | MoeCard NT 3.0.3+, glibc 2.35+ |
 
 Windows and Linux packages are not interchangeable.
 
