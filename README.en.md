@@ -1,6 +1,6 @@
-Current release: **1.6.17**. Native IPC import requires MoeCard NT 3.0.3 or newer. Standalone forward/reverse WebSocket deployment remains available.
+Current release: **1.6.18**. This compatibility release targets MoeCard NT 3.0.3–3.0.5; use the matching candidate plugin for 3.0.6 test builds. Standalone forward/reverse WebSocket deployment remains available.
 
-Version 1.6.17 adds stable Linux container identities and a framework-controlled offline migration entry for protected keys and connection credentials. Container migration requires a framework that supports this workflow; preserve existing data and let the framework migrate a separate stopped-data copy. Existing UI and message formats are retained. Native imports require framework 3.0.3 or newer. ARM64 validation uses QEMU.
+Version 1.6.18 fixes live subscriptions interfering with dynamic collection: live status polling avoids extra web-profile requests, reconnect metadata is queued, failures back off separately, and dynamic work retains request capacity. This compatibility release targets the existing framework 3.0.3–3.0.5 API; it does not include the upcoming 3.0.6 node-free/Docker-only IPC adaptation. Retain existing data when upgrading. ARM64 validation uses QEMU.
 
 <div align="center">
   <img src="bilibili-suite-cover.png" width="100%" alt="B站综合插件" />
@@ -21,7 +21,7 @@ Version 1.6.17 adds stable Linux container identities and a framework-controlled
 
 ## Overview
 
-B站综合插件 (Bilibili Utility Suite) connects to MoeCard NT 3.0.3+ through native IPC and provides Bilibili queries, subscriptions, link parsing, notifications, and locally rendered image cards for group and private chats. Standalone deployments can still use forward or reverse WebSocket.
+B站综合插件 (Bilibili Utility Suite) connects to MoeCard NT 3.0.3–3.0.5 through native IPC and provides Bilibili queries, subscriptions, link parsing, notifications, and locally rendered image cards for group and private chats. Standalone deployments can still use forward or reverse WebSocket.
 
 Windows and Linux share the same browser-based administration UI. The plugin sends plain text and image messages only and does not depend on Markdown support.
 
@@ -43,9 +43,9 @@ Send `哔哩菜单` in chat to open the command menu.
 
 | Platform | Package | Requirements |
 | --- | --- | --- |
-| Windows x64 | `BilibiliSuite-*-native-windows-amd64.zip` | MoeCard NT 3.0.3+ plugin import |
-| Linux x86_64 | `BilibiliSuite-*-native-linux-amd64.tar.gz` | MoeCard NT 3.0.3+, glibc 2.35+ |
-| Linux ARM64 | `BilibiliSuite-*-native-linux-arm64.tar.gz` | MoeCard NT 3.0.3+, glibc 2.35+ |
+| Windows x64 | `BilibiliSuite-*-native-windows-amd64.zip` | MoeCard NT 3.0.3–3.0.5 plugin import |
+| Linux x86_64 | `BilibiliSuite-*-native-linux-amd64.tar.gz` | MoeCard NT 3.0.3–3.0.5, glibc 2.35+ |
+| Linux ARM64 | `BilibiliSuite-*-native-linux-arm64.tar.gz` | MoeCard NT 3.0.3–3.0.5, glibc 2.35+ |
 
 Windows and Linux packages are not interchangeable.
 
