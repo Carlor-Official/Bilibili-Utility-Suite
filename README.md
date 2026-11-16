@@ -4,7 +4,7 @@
   <p>
     <a href="https://github.com/CarlorOfficial/Bilibili-Utility-Suite/releases/latest"><img src="https://img.shields.io/badge/下载-GitHub%20Releases-6C5CE7?style=flat-square" alt="GitHub Releases" /></a>
     <img src="https://img.shields.io/badge/平台-Windows%20%7C%20Linux-2684FF?style=flat-square" alt="Windows 与 Linux" />
-    <img src="https://img.shields.io/badge/架构-x86__64-00A884?style=flat-square" alt="x86_64" />
+    <img src="https://img.shields.io/badge/架构-x86__64%20%7C%20ARM64-00A884?style=flat-square" alt="x86_64 与 ARM64" />
     <img src="https://img.shields.io/badge/消息-文字%20%2B%20图片-F59E0B?style=flat-square" alt="文字与图片消息" />
   </p>
 
@@ -23,9 +23,9 @@
 
 ---
 
-当前版本：**1.6.19**。适配萌卡 NT 3.0.7，支持 Windows 原生 IPC 与 Linux Docker IPC，也保留独立正向/反向 WebSocket 部署，详见 [1.6.19 更新说明](release-notes-1.6.19.md)。
+当前版本：**1.6.22**。适配萌卡 NT 3.1.3，同一安装包支持框架 IPC 导入、正向 WS 和反向 WS，详见 [1.6.22 更新说明](release-notes-1.6.22.md)。
 
-**Windows 原生 IPC 要求框架 3.0.7+；Linux Docker IPC 要求 3.0.6+。旧版框架请保留 1.6.18。**
+**本版 IPC 导入要求框架 3.1.3+。只需按系统与架构下载对应安装包，无需区分 IPC 包和 WS 包。**
 
 ## 项目简介
 
@@ -81,23 +81,22 @@ B站综合插件（Bilibili Utility Suite）通过萌卡 NT 的原生 IPC 接收
 
 | 平台 | 外发包 | 运行方式 | 要求 |
 | --- | --- | --- | --- |
-| Windows x64 | `BilibiliSuite-*-native-windows-amd64.zip` | 框架直接运行，无需 Docker | 萌卡 NT 3.0.7+ |
-| Linux x86_64 | `BilibiliSuite-*-native-linux-amd64.tar.gz` | 框架 Docker 插件导入 | 萌卡 NT 3.0.6+，glibc 2.35+ |
-| Linux ARM64 | `BilibiliSuite-*-native-linux-arm64.tar.gz` | 框架 Docker 插件导入 | 萌卡 NT 3.0.6+，glibc 2.35+ |
-| 独立部署 | 不含 `native` 的对应平台包 | 解压后运行或安装 | 手动配置正向/反向 WebSocket |
+| Windows x64 | `BilibiliSuite-1.6.22-windows-x86_64.zip` | 框架直接导入，或解压后独立运行 | IPC 要求萌卡 NT 3.1.3+ |
+| Linux x86_64 / amd64 | `BilibiliSuite-1.6.22-linux-x86_64.tar.gz` | 框架 Docker 插件导入，或独立安装 | IPC 要求萌卡 NT 3.1.3+；独立运行要求 glibc 2.39+ |
+| Linux ARM64 | `BilibiliSuite-1.6.22-linux-arm64.tar.gz` | 框架 Docker 插件导入，或独立安装 | IPC 要求萌卡 NT 3.1.3+；独立运行要求 glibc 2.39+ |
 
-Windows、Linux x86_64 与 Linux ARM64 使用不同的二进制，请勿混用。框架部署应下载文件名包含 `native` 的包；独立 Linux 部署不需要桌面环境，安装后由 systemd 管理并通过 WebUI 配置。
+共三款平台安装包，每款包内的同一程序均支持 IPC、正向 WS 和反向 WS。压缩包根目录包含 `mengka-plugin.json`，可直接上传框架导入；独立部署则完整解压。Linux 独立运行支持 Ubuntu 24.04、Debian 13 或其他提供 glibc 2.39 及以上版本的系统，无需桌面环境；IPC 使用框架提供的容器运行环境。
 
 ## 快速开始
 
 ### 1. 下载
 
-前往 [GitHub Releases](https://github.com/Carlor-Official/Bilibili-Utility-Suite/releases/latest)，下载与系统和架构对应的压缩包。框架部署选择文件名包含 `native` 的插件导入包；独立部署选择普通包。Release 中的同名 `.sig` 是数字签名，请勿使用来源不明或签名不匹配的包。
+前往 [GitHub Releases](https://github.com/Carlor-Official/Bilibili-Utility-Suite/releases/latest)，下载与系统和架构对应的压缩包。同一压缩包可用于框架导入和独立部署。Release 中的同名 `.sig` 是数字签名，请勿使用来源不明或签名不匹配的包。
 
 ### 2. 框架插件导入（推荐）
 
 1. 打开萌卡 NT 的“插件 → 插件导入”。
-2. 上传与服务器系统、架构一致的 `native` 包，查看并确认插件申请的能力。
+2. 上传与服务器系统、架构一致的压缩包，查看并确认插件申请的能力。
 3. 导入完成后由框架自动启动插件；无需填写 WebSocket 端口或令牌。
 4. 从插件管理页面打开管理端，完成插件主人、账号授权、群功能和 B站扫码登录配置。
 
@@ -128,8 +127,8 @@ Windows、Linux x86_64 与 Linux ARM64 使用不同的二进制，请勿混用�
 sudo ./install.sh
 ```
 
-3. 安装向导会配置 WebUI 监听地址、端口和管理令牌；默认端口为 `18080`。
-4. 浏览器访问 `http://服务器IP:18080`。
+3. 安装向导会配置 WebUI 监听地址和端口；默认端口为 `18080`。
+4. 浏览器访问 `http://服务器IP:18080`，首次创建管理员，再配置正向或反向 WS。
 5. 常用运维命令：
 
 ```bash
@@ -180,19 +179,14 @@ WebUI 同时适用于 Windows 与 Linux，主要页面包括：
 
 ## 图片消息与远程部署
 
-当插件与萌卡 NT 框架不在同一台机器时，需要在“框架连接”配置**图片公网访问地址**。该地址应反向代理到插件 WebUI，并保留 `/media/` 路径：
-
-- 图片链接仅供框架读取；
-- 默认约 180 秒过期；
-- 每张图片只能成功读取一次；
-- 未配置公网地址时会立即回退到文字回复，避免长时间等待上传超时。
+插件与框架跨服务器部署时，使用正向或反向 WS。图片通过框架的文件传输接口上传，再由所选机器人账号发送；本地图片和扫码二维码不依赖两端共享文件路径，也无需额外暴露图片公网地址。请确保框架连接和相应图片上传能力可用。
 
 ## 安全与隐私
 
 - 外发包只包含签名后的程序、运行库和使用文档，不包含插件核心源码、发布私钥、用户配置或业务数据；
 - 主程序和在线更新包均进行数字签名校验，文件被修改或签名缺失时拒绝运行或安装；
-- WebUI 管理令牌、框架令牌与 B站登录凭据采用本机加密存储；
-- Web API 对连续错误令牌进行来源限速；
+- WebUI 使用管理员账号密码和 Cookie 会话，框架令牌与 B站登录凭据采用本机加密存储；
+- Web API 对连续错误登录进行来源限速；
 - 日志会自动隐藏令牌、Cookie 与常见敏感字段；
 - 在线授权以机器人 QQ 为单位校验，不能用一个 QQ 的授权代替另一个 QQ。
 
@@ -203,7 +197,7 @@ WebUI 同时适用于 Windows 与 Linux，主要页面包括：
 独立部署可在 WebUI 右上角检查 GitHub 最新 Release；插件导入模式由框架插件管理页面负责升级：
 
 1. 只在远端版本高于当前版本时显示更新；
-2. Windows 与 Linux 自动选择各自的 x86_64 包；
+2. 根据 Windows、Linux x86_64 或 Linux ARM64 自动选择对应的统一包；
 3. 下载压缩包及其同名 `.sig`；
 4. 验签成功后才进入安装流程；
 5. 签名缺失、损坏或平台不匹配时拒绝更新。
@@ -227,7 +221,7 @@ WebUI 同时适用于 Windows 与 Linux，主要页面包括：
 <details>
 <summary><strong>远程部署时图片发送失败</strong></summary>
 
-配置可被框架访问的 HTTPS 图片公网地址，确认反向代理保留 `/media/` 路径，并检查服务器防火墙、安全组和代理规则。未配置时插件会回退到文字消息。
+在日志中检查框架文件传输和图片上传回执，并确认当前机器人账号、协议和目标群或好友有效。跨服务器使用 WS 时，图片同样通过已认证的框架连接上传。
 
 </details>
 
