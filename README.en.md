@@ -1,6 +1,6 @@
-Current release: **1.6.22**, compatible with MoeCard NT 3.1.3. Each platform package supports framework IPC import and standalone forward/reverse WebSocket connections.
+Current release: **1.6.23**, compatible with MoeCard NT 3.2.2. Runtime status now handles invisible nicknames and reports the plugin's current environment or container metrics. Each platform package supports framework IPC import and standalone forward/reverse WebSocket connections.
 
-Download one of three packages for Windows x86_64, Linux x86_64, or Linux ARM64. IPC import requires framework 3.1.3+. The archive has `mengka-plugin.json` at its root and can also be extracted for standalone use. See [1.6.22 release notes](release-notes-1.6.22.md). Back up existing data before upgrading.
+Download one of three packages for Windows x86_64, Linux x86_64, or Linux ARM64. IPC import requires framework 3.1.3+. The archive has `mengka-plugin.json` at its root and can also be extracted for standalone use. See [1.6.23 release notes](release-notes-1.6.23.md). Back up existing data before upgrading.
 
 <div align="center">
   <img src="bilibili-suite-cover.png" width="100%" alt="B站综合插件" />
@@ -43,9 +43,9 @@ Send `哔哩菜单` in chat to open the command menu.
 
 | Platform | Package | Requirements |
 | --- | --- | --- |
-| Windows x64 | `BilibiliSuite-1.6.22-windows-x86_64.zip` | IPC import: MoeCard NT 3.1.3+; standalone: extract and run |
-| Linux x86_64 / amd64 | `BilibiliSuite-1.6.22-linux-x86_64.tar.gz` | IPC import: MoeCard NT 3.1.3+ Docker runtime; standalone: glibc 2.39+ |
-| Linux ARM64 | `BilibiliSuite-1.6.22-linux-arm64.tar.gz` | IPC import: MoeCard NT 3.1.3+ Docker runtime; standalone: glibc 2.39+ |
+| Windows x64 | `BilibiliSuite-1.6.23-windows-x86_64.zip` | IPC import: MoeCard NT 3.1.3+; standalone: extract and run |
+| Linux x86_64 / amd64 | `BilibiliSuite-1.6.23-linux-x86_64.tar.gz` | IPC import: MoeCard NT 3.1.3+ Docker runtime; standalone: glibc 2.39+ |
+| Linux ARM64 | `BilibiliSuite-1.6.23-linux-arm64.tar.gz` | IPC import: MoeCard NT 3.1.3+ Docker runtime; standalone: glibc 2.39+ |
 
 Each archive contains the same executable for IPC and both WS modes on its platform. Windows and Linux binaries are not interchangeable. Standalone Linux requires Ubuntu 24.04, Debian 13, or another system with glibc 2.39 or later; IPC uses the container runtime supplied by the framework.
 

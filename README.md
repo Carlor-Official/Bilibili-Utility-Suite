@@ -23,7 +23,7 @@
 
 ---
 
-当前版本：**1.6.22**。适配萌卡 NT 3.1.3，同一安装包支持框架 IPC 导入、正向 WS 和反向 WS，详见 [1.6.22 更新说明](release-notes-1.6.22.md)。
+当前版本：**1.6.23**。兼容萌卡 NT 3.2.2，修复不可见昵称并展示插件当前环境 / 容器的运行指标。同一安装包支持框架 IPC 导入、正向 WS 和反向 WS，详见 [1.6.23 更新说明](release-notes-1.6.23.md)。
 
 **本版 IPC 导入要求框架 3.1.3+。只需按系统与架构下载对应安装包，无需区分 IPC 包和 WS 包。**
 
@@ -81,9 +81,9 @@ B站综合插件（Bilibili Utility Suite）通过萌卡 NT 的原生 IPC 接收
 
 | 平台 | 外发包 | 运行方式 | 要求 |
 | --- | --- | --- | --- |
-| Windows x64 | `BilibiliSuite-1.6.22-windows-x86_64.zip` | 框架直接导入，或解压后独立运行 | IPC 要求萌卡 NT 3.1.3+ |
-| Linux x86_64 / amd64 | `BilibiliSuite-1.6.22-linux-x86_64.tar.gz` | 框架 Docker 插件导入，或独立安装 | IPC 要求萌卡 NT 3.1.3+；独立运行要求 glibc 2.39+ |
-| Linux ARM64 | `BilibiliSuite-1.6.22-linux-arm64.tar.gz` | 框架 Docker 插件导入，或独立安装 | IPC 要求萌卡 NT 3.1.3+；独立运行要求 glibc 2.39+ |
+| Windows x64 | `BilibiliSuite-1.6.23-windows-x86_64.zip` | 框架直接导入，或解压后独立运行 | IPC 要求萌卡 NT 3.1.3+ |
+| Linux x86_64 / amd64 | `BilibiliSuite-1.6.23-linux-x86_64.tar.gz` | 框架 Docker 插件导入，或独立安装 | IPC 要求萌卡 NT 3.1.3+；独立运行要求 glibc 2.39+ |
+| Linux ARM64 | `BilibiliSuite-1.6.23-linux-arm64.tar.gz` | 框架 Docker 插件导入，或独立安装 | IPC 要求萌卡 NT 3.1.3+；独立运行要求 glibc 2.39+ |
 
 共三款平台安装包，每款包内的同一程序均支持 IPC、正向 WS 和反向 WS。压缩包根目录包含 `mengka-plugin.json`，可直接上传框架导入；独立部署则完整解压。Linux 独立运行支持 Ubuntu 24.04、Debian 13 或其他提供 glibc 2.39 及以上版本的系统，无需桌面环境；IPC 使用框架提供的容器运行环境。
 
